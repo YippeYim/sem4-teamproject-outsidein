@@ -7,3 +7,18 @@ document.getElementById("dateSelected").addEventListener("click", function() {
         }
     }).open();
 });
+
+document.getElementById("menuToggle").addEventListener("click", function() {
+    document.getElementById("sidebarMenu").classList.toggle("active");
+});
+
+// เปิด Sidebar
+document.getElementById("menuToggle").addEventListener("click", function() {
+    document.getElementById("sidebarMenu").classList.add("active");
+});
+
+// ปิด Sidebar
+document.getElementById("closeSidebar").addEventListener("click", function() {
+    document.getElementById("sidebarMenu").classList.remove("active");
+});
+
