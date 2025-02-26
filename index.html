@@ -9,32 +9,42 @@
         body * {
             border: 1px solid red;
         }
+        html, body {
+            overflow: hidden;
+        }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> 
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
-<nav>
-    <h1>Outside-In</h1>
-    <div class="menu-icon">
-        <img src="https://img.icons8.com/material-outlined/24/000000/menu--v1.png" alt="Menu Icon">
+    <nav>
+        <h1>Outside-In</h1>
+        <div class="menu-icon" id="menuToggle">
+            <img src="https://img.icons8.com/material-outlined/24/000000/menu--v1.png" alt="Menu Icon">
+        </div>
+    </nav>
+    
+    <!-- Sidebar Menu -->
+    <div class="sidebar" id="sidebarMenu">
+        <button class="close-btn" id="closeSidebar"><img src="https://img.icons8.com/material-outlined/24/000000/menu--v1.png" alt="Menu Icon"></button>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Service</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
     </div>
-    <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-</nav>
+    
 
 <div class="container-noti">
     <p class="text-noti">note</p>
 </div>
 
 <div class="container-calendar">
-    <div class="calender"></div>
+    <div class="calendar"></div>
     <div class="calendar-respond"></div>
 </div>
 
@@ -51,51 +61,52 @@
 </div>
 
 <div class="swipe-box" id="swipeBox">
-    <img src="https://img.icons8.com/material-outlined/24/000000/up.png" alt="Up Icon">
-    <p class="date-selected">18/11/04</p>
+    <img class="arrow-up" src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f53a.svg" alt="Up Icon">
+    <div class="date-container">
+        <p class="date-selected">18 / 11 / 04</p>
+    </div>
 </div>
 
 <!-- Page 2 -->
 <div class="page-note" id="pageNote">
     <!-- maybe make it display on top after swipe up -->
-    <div class="container-button-shortcut2">
-        <button class="button-shortcut2" id="btn-shortcut4">
+    <div class="container-button-shortcut-notepage">
+        <button class="button-shortcut-notepage" id="btn-shortcut4">
             <img src="">
         </button>
-        <button class="button-shortcut2" id="btn-shortcut5">
+        <button class="button-shortcut-notepage" id="btn-shortcut5">
             <img src="">
         </button>
-        <button class="button-shortcut2" id="btn-shortcut6">
+        <button class="button-shortcut-notepage" id="btn-shortcut6">
             <img src="">
         </button>
     </div>
     
     <div class="container-note">
-        <img class="arrow2" src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f53b.svg" alt="Down Icon">
+        <img class="arrow-down" src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f53b.svg" alt="Down Icon">
         <div class="date-container">
-            <p class="date-selected-2" id="dateSelected">18 / 11 / 04</p>
+            <p class="date-selected-notepage" id="dateSelected">18 / 11 / 04</p>
             <input type="date" id="datePicker" style="display: none;">
         </div>          
         <div class="note-area" id="noteArea"></div>
         
         <div class="container-emotion">
-            <p class="text-emotion-ask" id="textEmotionAsk" >How are you feeling?</p>
+            <p class="text-emotion-ask" id="textEmotionAsk" >How are you feeling ?</p>
             <ul class="container-button-emotion">
-                <li>
-                    <button class="button-shortcut2" id="btn-shortcut7">
-                        <img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f914.svg" alt="Smile Icon">
-                    </button>
-                </li>
-                <li><button class="button-shortcut2" id="btn-shortcut8"><img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f625.svg" alt="Home Icon"></button></li>
-                <li><button class="button-shortcut2" id="btn-shortcut9"><img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f970.svg" alt="About Icon"></button></li>
-                <li><button class="button-shortcut2" id="btn-shortcut10"><img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f92c.svg" alt="Contact Icon"></button></li>
-                <li><button class="button-shortcut2" id="btn-shortcut11"><img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f922.svg" alt="Contact Icon"></button></li>
+                <li><button class="button-shortcut-notepage" id="btn-shortcut7"><img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f914.svg" alt="Smile Icon"></button></li>
+                <li><button class="button-shortcut-notepage" id="btn-shortcut8"><img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f625.svg" alt="Home Icon"></button></li>
+                <li><button class="button-shortcut-notepage" id="btn-shortcut9"><img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f970.svg" alt="About Icon"></button></li>
+                <li><button class="button-shortcut-notepage" id="btn-shortcut10"><img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f92c.svg" alt="Contact Icon"></button></li>
+                <li><button class="button-shortcut-notepage" id="btn-shortcut11"><img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f922.svg" alt="Contact Icon"></button></li>
             </ul>
         </div>
     </div>
 </div>
 
-
 </body>
+
 <script src="app.js" defer></script>
+<script src="calendar.js" defer></script>
+<script src="swipe.js" defer></script>
+<script src="noti.js" defer></script>
 </html>
