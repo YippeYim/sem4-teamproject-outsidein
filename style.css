@@ -1,28 +1,163 @@
   body {
   font-family: 'Itim', cursive;
+  background-color: #FFE2E2;
+  margin: 0;
+  padding: 0;
   }
 
-/* Note Page */
- .page-note {
-    width: 90%;
-    max-width: 400px;
-    background-color: #FFE2E2;
-    padding: 20px;
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    margin: 0;
+  }
+
+  .menu-icon img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* เมนู Sidebar */
+  .sidebar {
+    position: fixed;
+    right: -250px; /* ซ่อน Sidebar ไว้ก่อน */
+    top: 0;
+    width: 150px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .sidebar .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar .nav-links li {
+    padding: 12px 20px;
+  }
+
+  .sidebar .nav-links a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #555;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sidebar .nav-links a:hover {
+    background-color: #f4f4f4;
+    border-radius: 5px;
+  }
+
+  /* แสดง Sidebar เมื่อมีคลาส active */
+  .sidebar.active {
+    right: 0;
+  }
+
+  /* ปุ่มปิด Sidebar */
+  .close-btn img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .close-btn {
+    margin: 15px;
+    left: 15px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #555;
+  }
+ 
+  .container-noti {
+    background-color: #D1E9F6;
+    margin : 10px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-noti{
+    font-size: 18px;
+    margin: 15px;
+    color: #555;
+    font-weight: bold;
+
+  }
+  .container-button-shortcut {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px;
+  }
+
+  .button-shortcut {
+    background-color: #D1E9F6;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swipe-box {
+    width: 100%;
+    background-color: #FFFDEC;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    position: relative;
+  }
+
+  .arrow-up {
+    display: flex;
+    margin: 10px auto;
+    width: 20px;
+  }
+  
+  .date-selected {
+    background-color: rgb(213, 209, 203);
+    padding: 5px 15px;
     border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    color: #555;
+  }
+
+  /* Note Page */
+ .page-note {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
   /* ปุ่ม Shortcut บน Note Page */
-  .container-button-shortcut2 {
+  .container-button-shortcut-notepage {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
   }
   
-  .button-shortcut2 {
+  .button-shortcut-notepage {
     background-color: #D1E9F6;
     border: none;
     padding: 10px;
@@ -40,16 +175,17 @@
   .container-note {
     width: 100%;
     background-color: #FFFDEC;
-    padding: 15px;
-    border-radius: 15px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
     position: relative;
+    justify-items: center;
   }
   
   /* ไอคอนลูกศรลง */
-  .arrow2 {
+  .arrow-down {
     display: flex;
-    margin: 0 auto 10px;
+    margin: 10px;
     width: 20px;
   }
 
@@ -62,17 +198,20 @@
     margin-bottom: 0px;
   }
   
- .date-selected-2 {
-    background-color: #d3c5b4;
+ .date-selected-notepage {
+    background-color: rgb(213, 209, 203);
     padding: 5px 15px;
     border-radius: 20px;
     font-weight: bold;
     font-size: 14px;
     text-align: center;
+    color: #555;
   }
   
   /* Note Area */
   .note-area {
+    width: 90%;
+    margin: 15px;
     background: #fff8e7;
     padding: 10px;
     border-radius: 10px;
@@ -85,22 +224,25 @@
   
   /* ส่วนของ Emotion */
   .container-emotion {
+    border-radius: 15px;
+    margin: 10px;
     display: flex;
     flex-direction: column;
     align-items: left;
-    margin-top: 10px;
+    background-color: #D1E9F6;
   }
   
   .text-emotion-ask {
+    font-size: 16px;
     font-weight: bold;
     color: #555;
-    margin: 0;
-    background-color: #D1E9F6;
+    margin-left: 10px;
+    margin-top: 0;
+    margin-bottom: 5px;
   }
   
   /* ปุ่มอารมณ์ */
   .container-emotion ul {
-    background-color: #D1E9F6;
     display: flex;
     gap: 10px;
     padding: 0;
@@ -112,11 +254,22 @@
   }
   
   .container-emotion ul li button {
-    background: #D1E9F6;
+    background: #FFE2E2;
     border: none;
     cursor: pointer;
+    margin: 5px;
   }
 
- .container-button-emotion{
+ .container-button-emotion {
     margin: 0;
+ }
+ 
+ /* ปุ่มวันในcalendar */
+ .date-button {
+  border-radius: 50%;
+  width: 1.5rem;
+  aspect-ratio: 1/1;
+ }
+ .selected-date {
+  background-color: red;
  }
