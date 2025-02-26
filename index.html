@@ -10,6 +10,10 @@
             border: 1px solid red;
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> 
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <nav>
@@ -51,35 +55,41 @@
     <p class="date-selected">18/11/04</p>
 </div>
 
+<!-- Page 2 -->
 <div class="page-note" id="pageNote">
     <!-- maybe make it display on top after swipe up -->
-    <div class="container-button-shortcut">
-        <button class="button-shortcut" id="btn-shortcut4">
+    <div class="container-button-shortcut2">
+        <button class="button-shortcut2" id="btn-shortcut4">
             <img src="">
         </button>
-        <button class="button-shortcut" id="btn-shortcut5">
+        <button class="button-shortcut2" id="btn-shortcut5">
             <img src="">
         </button>
-        <button class="button-shortcut" id="btn-shortcut6">
+        <button class="button-shortcut2" id="btn-shortcut6">
             <img src="">
         </button>
     </div>
     
     <div class="container-note">
-        <img src="https://img.icons8.com/material-outlined/24/000000/down.png" alt="Down Icon">
-        <p class="date-selected">18/11/04</p>
+        <img class="arrow2" src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f53b.svg" alt="Down Icon">
+        <div class="date-container">
+            <p class="date-selected-2" id="dateSelected">18 / 11 / 04</p>
+            <input type="date" id="datePicker" style="display: none;">
+        </div>          
         <div class="note-area" id="noteArea"></div>
         
         <div class="container-emotion">
-            <button class="button-shortcut" id="btn-shortcut7">
-                <img src="https://img.icons8.com/material-outlined/24/000000/happy.png" alt="Smile Icon">
-            </button>
             <p class="text-emotion-ask" id="textEmotionAsk" >How are you feeling?</p>
-            <ul class="container-button-shortcut">
-                <li><button><img src="https://img.icons8.com/material-outlined/24/000000/home.png" alt="Home Icon"></button></li>
-                <li><button><img src="https://img.icons8.com/material-outlined/24/000000/about.png" alt="About Icon"></button></li>
-                <li><button><img src="https://img.icons8.com/material-outlined/24/000000/services.png" alt="Services Icon"></button></li>
-                <li><button><img src="https://img.icons8.com/material-outlined/24/000000/contact.png" alt="Contact Icon"></button></li>
+            <ul class="container-button-emotion">
+                <li>
+                    <button class="button-shortcut2" id="btn-shortcut7">
+                        <img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f914.svg" alt="Smile Icon">
+                    </button>
+                </li>
+                <li><button class="button-shortcut2" id="btn-shortcut8"><img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f625.svg" alt="Home Icon"></button></li>
+                <li><button class="button-shortcut2" id="btn-shortcut9"><img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f970.svg" alt="About Icon"></button></li>
+                <li><button class="button-shortcut2" id="btn-shortcut10"><img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f92c.svg" alt="Contact Icon"></button></li>
+                <li><button class="button-shortcut2" id="btn-shortcut11"><img src="https://cdn.jsdelivr.net/npm/twemoji@11.3.0/2/svg/1f922.svg" alt="Contact Icon"></button></li>
             </ul>
         </div>
     </div>
