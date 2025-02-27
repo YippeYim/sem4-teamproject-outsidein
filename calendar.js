@@ -1,4 +1,3 @@
-console.log("calendar.js loaded");
 const calendarElement = document.querySelector('.calendar');
 // calendarElement.style.overflowX = 'hidden';
 // calendarElement.style.whiteSpace = 'nowrap';
@@ -40,20 +39,28 @@ const createCalendar = (currentDate, calendarElement) => {
             } else if (date > daysInMonth) {
                 break;
             } else {
-                // create button element for each day
+                // สร้างปุ่มสำหรับแต่ละวัน
                 const button = document.createElement('button');
                 button.classList.add('date-button');
                 const fullDate = new Date(Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), date));
-                fullDate.setHours(fullDate.getHours() + 7); // Adjust to Thailand timezone (UTC+7)
+                fullDate.setHours(fullDate.getHours() + 7); // ปรับเป็นโซนเวลาไทย (UTC+7)
                 button.setAttribute('data-date', fullDate.toISOString().split('T')[0]);
                 button.textContent = date;
                 button.addEventListener('click', () => {
-                    // console.log(button.getAttribute('data-date'));
+                    // เมื่อคลิกเลือกวันที่
                     selectedDate = new Date(button.getAttribute('data-date'));
                     console.log(selectedDate);
                     document.querySelectorAll('.date-button').forEach(btn => btn.classList.remove('selected-date'));
                     button.classList.add('selected-date');
                     updateDateSelectedText();
+
+                    // โหลดข้อความที่บันทึกไว้สำหรับวันที่นี้ (key = "note-YYYY-MM-DD")
+                    const dateKey = button.getAttribute('data-date');
+                    const savedNote = localStorage.getItem("note-" + dateKey) || "";
+                    const noteArea = document.getElementById('noteArea');
+                    if (noteArea) {
+                        noteArea.innerText = savedNote;
+                    }
                 });
                 cell.appendChild(button);
                 date++;
@@ -102,8 +109,24 @@ const createCalendar = (currentDate, calendarElement) => {
     todayButton.addEventListener('click', () => {
         selectedDate = new Date();
         updateCalendar(0);
+        // ไฮไลต์วันที่ปัจจุบัน
+        document.querySelectorAll('.date-button').forEach(btn => {
+            if (btn.getAttribute('data-date') === new Date().toISOString().split('T')[0]) {
+                btn.classList.add('selected-date');
+            } else {
+                btn.classList.remove('selected-date');
+            }
+        });
+        
         updateDateSelectedText();
 
+        // โหลดข้อความสำหรับวันที่ปัจจุบัน
+        const todayKey = new Date().toISOString().split('T')[0];
+        const savedNote = localStorage.getItem("note-" + todayKey) || "";
+        const noteArea = document.getElementById('noteArea');
+        if (noteArea) {
+            noteArea.innerText = savedNote;
+        }
     });
     calendarContainer.appendChild(todayButton);
 
@@ -111,10 +134,12 @@ const createCalendar = (currentDate, calendarElement) => {
 };
 
 const updateDateSelectedText = () => {
-    // update date selected text
+    // อัปเดตข้อความวันที่ที่เลือก (ใน element ที่มี class "date-selected" และ id "dateSelected")
     const formattedDate = `${selectedDate.getDate().toString().padStart(2, '0')} / ${(selectedDate.getMonth() + 1).toString().padStart(2, '0')} / ${selectedDate.getFullYear().toString().slice(-2)}`;
-    document.querySelector('.date-selected').textContent = formattedDate;
-    document.querySelector('#dateSelected').textContent = formattedDate;
+    const dateSelectedElements = document.querySelectorAll('.date-selected, #dateSelected');
+    dateSelectedElements.forEach(el => {
+        el.textContent = formattedDate;
+    });
 };
 
 const arrangeCalendars = () => {
@@ -138,50 +163,21 @@ const clearCalendar = () => {
 const updateCalendar = (Shift) => {
     clearCalendar();
     const nextMonth = new Date(selectedDate);
-    // nextMonth.setMonth(nextMonth.getMonth() + Shift - 1);
-    // createCalendar(nextMonth, calendarElement);
-    // nextMonth.setMonth(nextMonth.getMonth() + 1);
-    // createCalendar(nextMonth, calendarElement);
-    // nextMonth.setMonth(nextMonth.getMonth() + 1);
-    // createCalendar(nextMonth, calendarElement);
     createCalendar(nextMonth, calendarElement);
-    // Highlight today's date
-    document.querySelectorAll('.date-button').forEach(btn => {
-        if (btn.getAttribute('data-date') === new Date().toISOString().split('T')[0]) {
-        btn.classList.add('selected-date');
-        } else {
-        btn.classList.remove('selected-date');
-        }
-    });
     arrangeCalendars();
-}
-// let startX = 0;
-// let endX = 0;
+};
 
-// calendarElement.addEventListener('touchstart', (e) => {
-//     startX = e.touches[0].clientX;
-// });
+// เมื่อ DOM โหลดเสร็จ ให้เพิ่ม event listener สำหรับ noteArea เพื่อบันทึกข้อความ
+document.addEventListener("DOMContentLoaded", function(){
+    const noteArea = document.getElementById('noteArea');
+    if (noteArea) {
+        noteArea.addEventListener('blur', function(){
+            // ใช้ selectedDate เป็น key ใน localStorage (รูปแบบ "note-YYYY-MM-DD")
+            const dateKey = selectedDate.toISOString().split('T')[0];
+            const noteContent = noteArea.innerText;
+            localStorage.setItem("note-" + dateKey, noteContent);
+        });
+    }
+});
 
-// calendarElement.addEventListener('touchmove', (e) => {
-//     endX = e.touches[0].clientX;
-// });
-
-// calendarElement.addEventListener('touchend', () => {
-//     const diffX = startX - endX;
-//     if (Math.abs(diffX) > 50) { // threshold for swipe
-//         if (diffX > 0) {
-//             monthShift++;
-//         } else {
-//             monthShift--;
-//         }
-//         updateCalendar(monthShift);
-//         calendarElement.scrollTo({
-//             left: calendarElement.scrollWidth / 3,
-//             behavior: 'smooth'
-//         });
-//     }
-// });
-// calendarElement.style.overflowX = 'hidden';
-
-updateDateSelectedText();
 updateCalendar(0);
