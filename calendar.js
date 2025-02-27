@@ -1,3 +1,4 @@
+console.log("calendar.js loaded");
 const calendarElement = document.querySelector('.calendar');
 // calendarElement.style.overflowX = 'hidden';
 // calendarElement.style.whiteSpace = 'nowrap';
@@ -101,15 +102,6 @@ const createCalendar = (currentDate, calendarElement) => {
     todayButton.addEventListener('click', () => {
         selectedDate = new Date();
         updateCalendar(0);
-        // Highlight today's date
-        document.querySelectorAll('.date-button').forEach(btn => {
-            if (btn.getAttribute('data-date') === new Date().toISOString().split('T')[0]) {
-            btn.classList.add('selected-date');
-            } else {
-            btn.classList.remove('selected-date');
-            }
-        });
-        
         updateDateSelectedText();
 
     });
@@ -153,6 +145,14 @@ const updateCalendar = (Shift) => {
     // nextMonth.setMonth(nextMonth.getMonth() + 1);
     // createCalendar(nextMonth, calendarElement);
     createCalendar(nextMonth, calendarElement);
+    // Highlight today's date
+    document.querySelectorAll('.date-button').forEach(btn => {
+        if (btn.getAttribute('data-date') === new Date().toISOString().split('T')[0]) {
+        btn.classList.add('selected-date');
+        } else {
+        btn.classList.remove('selected-date');
+        }
+    });
     arrangeCalendars();
 }
 // let startX = 0;
@@ -183,4 +183,5 @@ const updateCalendar = (Shift) => {
 // });
 // calendarElement.style.overflowX = 'hidden';
 
+updateDateSelectedText();
 updateCalendar(0);
