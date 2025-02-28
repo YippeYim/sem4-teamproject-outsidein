@@ -18,6 +18,14 @@ const closeEmotionMenu = () => {
     document.querySelector(".emotion-menu").style.visibility = "visible";
     document.querySelector(".emotion-menu").style.height = '';
     document.querySelector(".emotion-menu").style.padding = '10px';
+    
+    document.querySelector(".text-emotion-ask").style.padding = "10px";
+    document.querySelector(".text-emotion-ask span").style.padding = "10px";
+    document.querySelector(".text-emotion-ask span").style.backgroundColor = "white";
+    document.querySelector(".text-emotion-ask span").style.borderRadius = "10%";
+    document.querySelector(".text-emotion-ask span").style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.1)";
+    document.querySelector(".text-emotion-ask span").style.transition = "0.5s";
+
 }
 
 const openEmotionMenu = () => {
@@ -29,6 +37,12 @@ const openEmotionMenu = () => {
     document.querySelector(".emotion-menu").style.visibility = "hidden";
     document.querySelector(".emotion-menu").style.height = 0;
     document.querySelector(".emotion-menu").style.padding = 0;
+    document.querySelector(".text-emotion-ask").style.padding = "";
+    document.querySelector(".text-emotion-ask span").style.padding = "";
+    document.querySelector(".text-emotion-ask span").style.margin = "";
+    document.querySelector(".text-emotion-ask span").style.backgroundColor = "rgba(255, 255, 255, 0)";
+    document.querySelector(".text-emotion-ask span").style.boxShadow = "";
+
 }
 
 const showNoteForDate = (date) => {
@@ -126,4 +140,12 @@ showNoteForDate(selectedDate);
 
 document.querySelector(".emotion-menu").addEventListener("click", function() {
     openEmotionMenu();
+});
+
+document.querySelector(".date-selected-notepage").addEventListener("input", function() {
+    console.log(document.querySelector(".date-selected-notepage").value);
+    selectedDate = new Date(document.querySelector(".date-selected-notepage").value);
+    updateDateSelectedText();
+    showNoteForDate(selectedDate);
+    updateCalendar(0);
 });

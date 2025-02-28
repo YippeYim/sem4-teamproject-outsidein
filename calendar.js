@@ -42,6 +42,7 @@ const createCalendar = (currentDate, calendarElement) => {
                 button.textContent = date;
                 button.addEventListener('click', () => {
                     selectedDate = new Date(button.getAttribute('data-date'));
+                    monthShift = 0;
                     document.querySelectorAll('.date-button').forEach(btn => btn.classList.remove('selected-date'));
                     button.classList.add('selected-date');
                     updateDateSelectedText();
@@ -65,15 +66,19 @@ const createCalendar = (currentDate, calendarElement) => {
     const prevButton = document.createElement('button');
     prevButton.textContent = '<';
     prevButton.addEventListener('click', () => {
-        selectedDate.setMonth(selectedDate.getMonth() - 1);
-        updateCalendar(0);
+        // selectedDate.setMonth(selectedDate.getMonth() - 1);
+        // updateCalendar(0);
+        monthShift--;
+        updateCalendar(monthShift);
     });
 
     const nextButton = document.createElement('button');
     nextButton.textContent = '>';
     nextButton.addEventListener('click', () => {
-        selectedDate.setMonth(selectedDate.getMonth() + 1);
-        updateCalendar(0);
+        // selectedDate.setMonth(selectedDate.getMonth() + 1);
+        // updateCalendar(0);
+        monthShift++;
+        updateCalendar(monthShift);
     });
 
     const headerContainer = document.createElement('div');
@@ -93,8 +98,10 @@ const createCalendar = (currentDate, calendarElement) => {
     todayButton.textContent = 'Today';
     todayButton.addEventListener('click', () => {
         selectedDate = new Date();
-        updateCalendar(0);
+        monthShift = 0;
+        updateCalendar(monthShift);
         updateDateSelectedText();
+        showNoteForDate(selectedDate);
     });
     calendarContainer.appendChild(todayButton);
 
@@ -102,9 +109,13 @@ const createCalendar = (currentDate, calendarElement) => {
 };
 
 const updateDateSelectedText = () => {
-    const formattedDate = `${selectedDate.getDate().toString().padStart(2, '0')} / ${(selectedDate.getMonth() + 1).toString().padStart(2, '0')} / ${selectedDate.getFullYear().toString().slice(-2)}`;
+    let formattedDate = selectedDate.toISOString().split("T")[0];
+    // console.log(formattedDate);
+    document.querySelector('#dateSelected').value = formattedDate;
+
+    formattedDate = formattedDate[8]+formattedDate[9]+"/"+formattedDate[5]+formattedDate[6]+"/"+formattedDate[2]+formattedDate[3];
     document.querySelector('.date-selected').textContent = formattedDate;
-    document.querySelector('#dateSelected').textContent = formattedDate;
+    // console.log(formattedDate);
 };
 
 const arrangeCalendars = () => {
@@ -128,9 +139,12 @@ const clearCalendar = () => {
 const updateCalendar = (Shift) => {
     clearCalendar();
     const nextMonth = new Date(selectedDate);
+    nextMonth.setMonth(nextMonth.getMonth() + Shift);
     createCalendar(nextMonth, calendarElement);
     document.querySelectorAll('.date-button').forEach(btn => {
-        if (btn.getAttribute('data-date') === new Date().toISOString().split('T')[0]) {
+        if (btn.getAttribute('data-date') === selectedDate.toISOString().split('T')[0]) {
+            console.log(btn.getAttribute('data-date'));
+            console.log(selectedDate.toISOString().split('T')[0]);
             btn.classList.add('selected-date');
         } else {
             btn.classList.remove('selected-date');
@@ -141,4 +155,4 @@ const updateCalendar = (Shift) => {
 
 
 updateDateSelectedText();
-updateCalendar(0);
+updateCalendar(monthShift);
