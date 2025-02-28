@@ -9,11 +9,39 @@ const saveNoteForDate = (date) => {
     localStorage.setItem(dateKey, JSON.stringify(noteData));
 };
 
+const closeEmotionMenu = () => {
+    document.querySelector(".container-emotion").style.backgroundColor = "rgba(255, 255, 255, 0)";
+    document.querySelector(".container-emotion").style.width = "10%";
+    document.querySelector(".container-emotion").style.transform = "translateX(-350%)";
+    document.querySelector(".container-button-emotion").style.visibility = "hidden";
+
+    document.querySelector(".emotion-menu").style.visibility = "visible";
+    document.querySelector(".emotion-menu").style.height = '';
+    document.querySelector(".emotion-menu").style.padding = '10px';
+}
+
+const openEmotionMenu = () => {
+    document.querySelector(".container-emotion").style.backgroundColor = "#D1E9F6";
+    document.querySelector(".container-button-emotion").style.visibility = "visible";
+    document.querySelector(".container-emotion").style.width = "";
+    document.querySelector(".container-emotion").style.transform = "";
+
+    document.querySelector(".emotion-menu").style.visibility = "hidden";
+    document.querySelector(".emotion-menu").style.height = 0;
+    document.querySelector(".emotion-menu").style.padding = 0;
+}
+
 const showNoteForDate = (date) => {
     const noteArea = document.getElementById('pagenote');
     const dateKey = date.toISOString().split('T')[0];
     const savedData = JSON.parse(localStorage.getItem(dateKey));
     if (savedData) {
+        if (savedData.emotions.length == 0) {
+            // console.log("No emotions selected");
+            closeEmotionMenu();           
+        }else{
+            openEmotionMenu();
+        }
         noteArea.innerHTML = savedData.note || '';
         const emotionButtons = document.querySelectorAll('.button-shortcut-emotion img');
         emotionButtons.forEach(button => {
@@ -30,6 +58,7 @@ const showNoteForDate = (date) => {
         document.querySelectorAll('.button-shortcut-emotion').forEach(button => {
             button.classList.remove('selected-emotion');
         });
+        closeEmotionMenu();
     }
 };
 
@@ -91,4 +120,10 @@ document.querySelectorAll('.button-shortcut-emotion').forEach(button => {
         saveNoteForDate(selectedDate);
         showNoteForDate(selectedDate);
     });
+});
+showNoteForDate(selectedDate);
+
+
+document.querySelector(".emotion-menu").addEventListener("click", function() {
+    openEmotionMenu();
 });
