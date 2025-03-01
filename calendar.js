@@ -113,7 +113,11 @@ const updateDateSelectedText = () => {
     // console.log(formattedDate);
     document.querySelector('#dateSelected').value = formattedDate;
 
-    formattedDate = formattedDate[8]+formattedDate[9]+"/"+formattedDate[5]+formattedDate[6]+"/"+formattedDate[2]+formattedDate[3];
+    // dd/mm/yy
+    // formattedDate = formattedDate[8]+formattedDate[9]+"/"+formattedDate[5]+formattedDate[6]+"/"+formattedDate[2]+formattedDate[3];
+    
+    // mm/dd/yy
+    formattedDate = formattedDate[5]+formattedDate[6]+"/"+formattedDate[8]+formattedDate[9]+"/"+formattedDate[2]+formattedDate[3];
     document.querySelector('.date-selected').textContent = formattedDate;
     // console.log(formattedDate);
 };
