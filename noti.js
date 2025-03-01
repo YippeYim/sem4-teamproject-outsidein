@@ -11,13 +11,30 @@ const message = [
   "ไม่ว่าคุณจะเจออะไรมา วันนี้คุณทำดีที่สุดแล้ว 🎉 แค่หายใจและอยู่ตรงนี้ก็ดีมากพอ 🍃"
 ];
 
-const changeTextRandomly = () => {
+const userHighlight = [];
+
+const loadHighlight = JSON.parse(localStorage.getItem("highlights"));
+if (loadHighlight){
+  for (const key in loadHighlight){
+    // console.log(key+loadHighlight[key][0]);
+    loadHighlight[key].forEach(message => {
+      // console.log(key+":"+message);
+      userHighlight.push(`📌${message} 📆${key[5]+key[6]+"/"+key[8]+key[9]+"/"+key[2]+key[3]}`);
+    });
+  }
+  // console.log(userHighlight);
+}else{
+  userHighlight = message;
+}
+
+
+const changeTextRandomly = (messageList) => {
     const elements = document.querySelectorAll('.text-noti');
     elements.forEach(element => {
-        const randomIndex = Math.floor(Math.random() * message.length);
-        element.textContent = message[randomIndex];
+        const randomIndex = Math.floor(Math.random() * messageList.length);
+        element.textContent = messageList[randomIndex];
     });
 };
 
-changeTextRandomly();
+changeTextRandomly(userHighlight);
 
