@@ -180,12 +180,19 @@
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
     position: relative;
     justify-items: center;
-  }
+      display: flex;         /* ใช้ Flexbox */
+      flex-direction: column; /* จัดเรียงแนวตั้ง */
+      justify-content: space-between; /* ให้เว้นระยะห่างแบบสมดุล */
+      align-items: center;   /* จัดตรงกลางแนวนอน */
+      height: 100%;          /* เต็มพื้นที่ของ swipe-box */      /* เว้นขอบบน-ล่างให้ดูพอดีๆ */
+      text-align: center;     /* จัด text ให้อยู่ตรงกลาง */
+      justify-content: center;
+      gap: 20px;
+    }
   
   /* ไอคอนลูกศรลง */
   .arrow-down {
     display: flex;
-    margin-top: 15px;
     width: 25px;
   }
 
@@ -199,7 +206,6 @@
   }
   
  .date-selected-notepage {
-    margin: 15px;
     background-color: rgb(213, 209, 203);
     padding: 5px 15px;
     border-radius: 20px;
@@ -213,8 +219,6 @@
   .note-area {
     padding: 15px;
     width: 85%;
-    margin: 25px;
-    margin-top: 10px;
     background: #fff8e7;
     padding: 15px;
     border-radius: 10px;
@@ -227,13 +231,13 @@
   
   /* ส่วนของ Emotion */
   .container-emotion {
+    width: 85%;
     padding: 10px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: left;
     background-color: #D1E9F6;
-    margin: 15px;
     
     transition: transform 0.3s ease-out;
   }
@@ -264,9 +268,9 @@
     font-size: 18px;
     font-weight: bold;
     color: #555;
+    margin: 10px;
     margin-left: 10px;
     margin-top: 0;
-    margin-bottom: 5px;
     white-space: nowrap;
   }
   
@@ -300,8 +304,9 @@
   .calendar {
     background-color: #FFE2E2;
   }
+
  .selected-date {
-  background-color: #FFCFCFa;
+  background-color: red;
   }
 
  .container-calendar {
