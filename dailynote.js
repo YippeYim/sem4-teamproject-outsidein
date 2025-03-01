@@ -7,6 +7,20 @@ const saveNoteForDate = (date) => {
         emotions: selectedEmotions
     };
     localStorage.setItem(dateKey, JSON.stringify(noteData));
+    
+    // extract highlight text from note
+    const matches = [...noteArea.innerHTML.matchAll(/<div>\s*!\s*(.*?)<\/div>/g)];
+    const extractedTexts = matches.map(match => match[1]); // Get only the captured text
+    // Save highlights
+    const savedData = JSON.parse(localStorage.getItem('highlights'));
+    if (savedData) {
+        savedData[dateKey] = extractedTexts;
+        localStorage.setItem("highlights", JSON.stringify(savedData));
+    }else{
+        const dataToSave = {};
+        dataToSave[dateKey] = extractedTexts;
+        localStorage.setItem("highlights", JSON.stringify(dataToSave));
+    }
 };
 
 const closeEmotionMenu = () => {
