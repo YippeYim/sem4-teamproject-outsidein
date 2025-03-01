@@ -23,8 +23,6 @@ if (loadHighlight){
     });
   }
   // console.log(userHighlight);
-}else{
-  userHighlight = message;
 }
 
 
@@ -36,5 +34,9 @@ const changeTextRandomly = (messageList) => {
     });
 };
 
-changeTextRandomly(userHighlight);
+if (userHighlight.length == 0){
+  changeTextRandomly(message);
+}else{
+  changeTextRandomly(userHighlight);
+}
 
