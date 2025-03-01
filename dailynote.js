@@ -12,8 +12,9 @@ const saveNoteForDate = (date) => {
 const closeEmotionMenu = () => {
     document.querySelector(".container-emotion").style.backgroundColor = "rgba(255, 255, 255, 0)";
     document.querySelector(".container-emotion").style.width = "10%";
-    document.querySelector(".container-emotion").style.transform = "translateX(-350%)";
+    document.querySelector(".container-emotion").style.transform = "translateX(-230%)";
     document.querySelector(".container-button-emotion").style.visibility = "hidden";
+    document.querySelector(".container-button-emotion").style.height = 0;
 
     document.querySelector(".emotion-menu").style.visibility = "visible";
     document.querySelector(".emotion-menu").style.height = '';
@@ -31,6 +32,7 @@ const closeEmotionMenu = () => {
 const openEmotionMenu = () => {
     document.querySelector(".container-emotion").style.backgroundColor = "#D1E9F6";
     document.querySelector(".container-button-emotion").style.visibility = "visible";
+    document.querySelector(".container-button-emotion").style.height = '';
     document.querySelector(".container-emotion").style.width = "";
     document.querySelector(".container-emotion").style.transform = "";
 

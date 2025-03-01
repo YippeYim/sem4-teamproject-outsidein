@@ -143,8 +143,8 @@ const updateCalendar = (Shift) => {
     createCalendar(nextMonth, calendarElement);
     document.querySelectorAll('.date-button').forEach(btn => {
         if (btn.getAttribute('data-date') === selectedDate.toISOString().split('T')[0]) {
-            console.log(btn.getAttribute('data-date'));
-            console.log(selectedDate.toISOString().split('T')[0]);
+            // console.log(btn.getAttribute('data-date'));
+            // console.log(selectedDate.toISOString().split('T')[0]);
             btn.classList.add('selected-date');
         } else {
             btn.classList.remove('selected-date');
