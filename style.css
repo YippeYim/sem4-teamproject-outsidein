@@ -6,15 +6,14 @@
   }
 
   nav {
-    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+    font-size: 18px;
   }
 
   h1 {
-    font-size: 1.5em;
     margin: 0;
   }
 
@@ -113,8 +112,8 @@
   .container-button-shortcut {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin: 30px;
+    gap: 40px;
+    margin: 10px;
   }
 
   .button-shortcut {
