@@ -6,10 +6,11 @@
   }
 
   nav {
+    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px;
+    padding: 20px;
   }
 
   h1 {
@@ -77,15 +78,17 @@
   }
  
   .container-noti {
+    margin: 15px;
+    margin-top: 0;
     background-color: #D1E9F6;
-    margin : 15px;
     border-radius: 15px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   }
 
   .text-noti{
+    margin: 0;
+    padding: 15px;
     font-size: 18px;
-    margin: 15px;
     color: #555;
     font-weight: bold;
   }
@@ -112,18 +115,20 @@
   }
 
   .swipe-box {
-    height: 100%;
+    padding: 10px;
+    height: calc(100vh - 400px); /* ปรับขนาดให้เต็มพื้นที่ที่เหลือ */
     background-color: #FFFDEC;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
     position: relative;
-  }
+    overflow-y: auto; /* ให้ scroll ได้ถ้าข้อมูลเยอะ */
+  }  
 
   .arrow-up {
     display: flex;
     margin: 10px auto;
-    width: 20px;
+    width: 25px;
   }
   
   .date-selected {
@@ -131,7 +136,7 @@
     padding: 5px 15px;
     border-radius: 20px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     color: #555;
   }
@@ -180,8 +185,8 @@
   /* ไอคอนลูกศรลง */
   .arrow-down {
     display: flex;
-    margin: 10px;
-    width: 20px;
+    margin-top: 15px;
+    width: 25px;
   }
 
   /* วันที่ใน Note */
@@ -194,24 +199,27 @@
   }
   
  .date-selected-notepage {
+    margin: 15px;
     background-color: rgb(213, 209, 203);
     padding: 5px 15px;
     border-radius: 20px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     color: #555;
   }
   
   /* Note Area */
   .note-area {
-    width: 90%;
-    margin: 30px;
+    padding: 15px;
+    width: 85%;
+    margin: 25px;
+    margin-top: 10px;
     background: #fff8e7;
-    padding: 10px;
+    padding: 15px;
     border-radius: 10px;
     min-height: 120px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
     color: #333;
     border: 1px solid #ddd;
@@ -219,6 +227,7 @@
   
   /* ส่วนของ Emotion */
   .container-emotion {
+    padding: 10px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -252,7 +261,7 @@
 }
 
   .text-emotion-ask {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     color: #555;
     margin-left: 10px;
@@ -283,19 +292,20 @@
  /* ปุ่มวันในcalendar */
  .date-button {
   border-radius: 50%;
-  width: 1.5rem;
+  width: 2rem;
   aspect-ratio: 1/1;
-  }
- .selected-date {
-  background-color: red;
-  }
-
- .container-calendar {
-  margin: 30px;
+  margin: 5px;
   }
 
   .calendar {
-    
+    background-color: #FFE2E2;
+  }
+ .selected-date {
+  background-color: #FFCFCFa;
+  }
+
+ .container-calendar {
+  margin: 10px;
   }
   
   .emotion-menu {
