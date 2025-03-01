@@ -141,7 +141,6 @@
     position: relative;
     overflow-y: auto; /* ให้ scroll ได้ถ้าข้อมูลเยอะ */
   }  
-
   .arrow-up {
     display: flex;
     margin: 10px auto;
@@ -156,6 +155,7 @@
     font-size: 16px;
     text-align: center;
     color: #555;
+    margin: 10px;
   }
 
   /* Note Page */
@@ -171,7 +171,7 @@
     display: flex;
     justify-content: center;
     gap: 40px;
-    margin: 20px;
+    margin: 10px;
   }
   
   .button-shortcut-notepage {
@@ -189,28 +189,31 @@
   }
   
   /* Container หลักของ Note */
-  .container-note {
-    width: 100%;
-    background-color: #FFFDEC;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-    position: relative;
-    justify-items: center;
-      display: flex;         /* ใช้ Flexbox */
-      flex-direction: column; /* จัดเรียงแนวตั้ง */
-      justify-content: space-between; /* ให้เว้นระยะห่างแบบสมดุล */
-      align-items: center;   /* จัดตรงกลางแนวนอน */
-      height: 100%;          /* เต็มพื้นที่ของ swipe-box */      /* เว้นขอบบน-ล่างให้ดูพอดีๆ */
-      text-align: center;     /* จัด text ให้อยู่ตรงกลาง */
+ 
+    .container-note {
+      width: 100%; /* กว้างเต็มหน้าจอ */
+      padding: 20px; /* ปรับ padding ตามต้องการ */
+      margin: 0; /* ลบ margin เพื่อไม่ให้มีช่องว่างรอบ ๆ */
+      background-color: #FFFDEC; /* สีครีม */
+      border-top-right-radius: 20px;
+      border-top-left-radius: 20px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
       gap: 20px;
     }
+      
+    
+
   
   /* ไอคอนลูกศรลง */
   .arrow-down {
     display: flex;
     width: 25px;
+    margin-top: 15px;
   }
 
   /* วันที่ใน Note */
@@ -237,7 +240,7 @@
     padding: 15px;
     width: 85%;
     background: #fff8e7;
-    padding: 15px;
+    margin-top: 5px;
     border-radius: 10px;
     min-height: 120px;
     font-size: 16px;
@@ -261,6 +264,9 @@
 
   .container-button-emotion {
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .button-shortcut-emotion {
@@ -323,7 +329,7 @@
   }
 
  .selected-date {
-  background-color: red;
+  background-color: #F37199;
   }
 
  .container-calendar {
@@ -338,3 +344,5 @@
   .selected-emotion {
     opacity: 1;
   }
+  
+  
