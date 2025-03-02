@@ -13,7 +13,7 @@ const showPageNote = () => {
     });
     Object.assign(pageNote.style, {
         visibility: 'visible',
-        zIndex: '9999',
+        zIndex: '2000',
         position: 'absolute',
         top: '0',
         transition: 'transform 0.5s ease-in-out',
