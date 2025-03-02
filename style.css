@@ -331,7 +331,7 @@
   width: 2rem;
   aspect-ratio: 1/1;
   margin: 5px;
-  border: 2px solid #F37199;
+  border: 2px solid #fca9c2;
   background-color: #fad0e1;
   }
 
@@ -340,7 +340,7 @@
   }
 
  .selected-date {
-  background-color: #F37199;
+  background-color: #fca9c2;
   }
 
  .container-calendar {
