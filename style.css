@@ -1,8 +1,11 @@
   body {
   font-family: 'Itim', cursive;
   background-color: #FFE2E2;
-  margin: 0;
+  margin-left: 0;
+  margin-right: 0;
   padding: 0;
+  overflow: auto;
+  
   }
 
   nav {
