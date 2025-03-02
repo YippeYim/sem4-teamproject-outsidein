@@ -19,7 +19,7 @@ document.querySelector("#btn-shortcut4").addEventListener("click",() => {
     overlay.style.left = '0';
     overlay.style.width = '100%';
     overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'; // Semi-transparent black
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'; // Semi-transparent black
     overlay.style.zIndex = '2001'; // Place it below the popup
     overlay.addEventListener("click", () => {
         popup.remove();
@@ -28,13 +28,13 @@ document.querySelector("#btn-shortcut4").addEventListener("click",() => {
     document.body.appendChild(overlay);
 
     // create popup
-    popup.innerHTML = '<h1>Select Template</h1>';
-    popup.innerHTML += `<h2>Prenote:</h2>
+    popup.innerHTML = '<h2>Select Template</h2>';
+    popup.innerHTML += `<h3>Add to note:</h3>
                         <button class="button-template prenote">3 Reflection</button>
                         <button class="button-template prenote">Habit Track</button>
                         <button class="button-template prenote">Drinking Log</button>
                         <br>
-                        <h2>Note line:</h2>
+                        <h3>Note background:</h3>
                         <button class="button-template layout">Blank</button>
                         <button class="button-template layout">Line</button>
                         <button class="button-template layout">Grid</button>
@@ -46,8 +46,8 @@ document.querySelector("#btn-shortcut4").addEventListener("click",() => {
     // popup.style.backgroundColor = 'green';
     popup.style.top = "50%";
     popup.style.left = "50%";
-    popup.style.transform = 'translate(-50%, -50%)';
-    popup.style.width = '80%'; // Set width to 90% of the viewport
+    popup.style.transform = 'translate(-0%, -50%)';
+    popup.style.width = '40%'; // Set width to 90% of the viewport
     popup.style.height = '60%'; // Set height to 90% of the viewport
     // popup.style.color = 'white';
     // popup.style.padding = '20px';
@@ -55,6 +55,7 @@ document.querySelector("#btn-shortcut4").addEventListener("click",() => {
     popup.style.zIndex = "2002";
     popup.style.overflowX = "hidden";
     popup.style.overflowY = "scroll";
+    popup.style.backgroundColor = 'rgba(82%,91.4%,96.5%,0.7)'; // Semi-transparent
     document.body.appendChild(popup);
 
     document.querySelectorAll(".button-template").forEach(button => {
