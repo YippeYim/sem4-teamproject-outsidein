@@ -138,7 +138,7 @@
 
   .swipe-box {
     padding: 10px;
-    height: calc(100vh - 400px); /* ปรับขนาดให้เต็มพื้นที่ที่เหลือ */
+    min-height: calc(100vh - 400px); /* ปรับขนาดให้เต็มพื้นที่ที่เหลือ */
     background-color: #FFFDEC;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
