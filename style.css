@@ -10,6 +10,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
     font-size: 18px;
   }
 
@@ -83,8 +85,9 @@
   }
  
   .container-noti {
-    margin: 15px;
-    margin-top: 0;
+    margin: 20px;
+    margin-top: 5px;
+    margin-bottom: 0;
     background-color: #D1E9F6;
     border-radius: 15px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
@@ -112,8 +115,8 @@
   .container-button-shortcut {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin: 10px;
+    gap: 400px;
+    margin-bottom: 10px;
   }
 
   .button-shortcut {
@@ -142,7 +145,7 @@
   }  
   .arrow-up {
     display: flex;
-    margin: 10px auto;
+    margin: auto;
     width: 25px;
   }
   
@@ -344,7 +347,7 @@
   }
 
  .container-calendar {
-  margin: 10px;
+  margin: 0;
   }
   
   .emotion-menu {
