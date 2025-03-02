@@ -207,15 +207,12 @@
       justify-content: center;
       gap: 20px;
     }
-      
-    
 
-  
   /* ไอคอนลูกศรลง */
   .arrow-down {
     display: flex;
     width: 25px;
-    margin-top: 15px;
+
   }
 
   /* วันที่ใน Note */

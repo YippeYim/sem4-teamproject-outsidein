@@ -4,7 +4,6 @@
 @media only screen and (max-width: 600px) {
     body {
         font-size: 14px;
-        overflow: scroll;
     }
 
     h1 {
@@ -65,6 +64,7 @@
 @media only screen and (max-width: 600px) {
     .calendar {
         overflow-x: auto; /* ให้สามารถเลื่อนแนวนอนได้ */
+        overflow-y: auto;
         white-space: nowrap; /* ป้องกันข้อความขึ้นบรรทัดใหม่ */
     }
 
