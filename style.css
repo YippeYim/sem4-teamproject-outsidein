@@ -253,6 +253,7 @@
     margin-top: 5px;
     border-radius: 10px;
     min-height: 120px;
+    max-height: 50vh;
     font-size: 20px;
     line-height: 1.6;
     color: #333;
@@ -267,6 +268,9 @@
     line-height: 25px;   /* ปรับความสูงของบรรทัดให้ตรงกับเส้น */
     padding-top: 5px;    /* ปรับตำแหน่งเริ่มต้นของข้อความ */
     white-space: pre-wrap; /* รักษาการขึ้นบรรทัดใหม่ */
+    
+    overflow-y: auto;  /* use auto for smoother behavior of scroll */
+    background-attachment: local;  /* Ensures the background scrolls with the content */
   }
   
   /* ส่วนของ Emotion */
