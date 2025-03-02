@@ -276,7 +276,7 @@
   
   /* ส่วนของ Emotion */
   .container-emotion {
-    width: 85%;
+    /* width: 85%; */
     padding: 10px;
     border-radius: 15px;
     display: flex;
