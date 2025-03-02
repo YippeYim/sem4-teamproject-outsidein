@@ -56,18 +56,25 @@ const createCalendar = (currentDate, calendarElement) => {
         table.appendChild(row);
     }
     
+    // เพิ่มกรอบสีชมพูอ่อนที่นี่
     const calendarContainer = document.createElement('div');
     calendarContainer.style.alignItems = 'center';
     calendarContainer.style.display = 'flex';
     calendarContainer.style.flexDirection = 'column';
+
+    // เพิ่มกรอบสีชมพูอ่อนที่เติมเต็มด้านใน
+    calendarContainer.style.border = '3px solidrgb(251, 188, 197)';  // สีชมพูอ่อน
+    calendarContainer.style.borderRadius = '15px';  // มุมมน
+    calendarContainer.style.padding = '10px';  // ระยะห่างจากขอบ
+    calendarContainer.style.width = 'fit-content';  // ขนาดพอดีกับเนื้อหาภายใน
+    calendarContainer.style.margin = '10px';  // เพิ่มช่องว่างรอบ ๆ ปฏิทิน
+    calendarContainer.style.backgroundColor = 'rgb(249, 203, 211)';  // เติมสีชมพูอ่อนที่ด้านในของกรอบ
 
     const monthLabel = document.createElement('h2');
     monthLabel.textContent = `${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getFullYear()}`;
     const prevButton = document.createElement('button');
     prevButton.textContent = '<';
     prevButton.addEventListener('click', () => {
-        // selectedDate.setMonth(selectedDate.getMonth() - 1);
-        // updateCalendar(0);
         monthShift--;
         updateCalendar(monthShift);
     });
@@ -75,8 +82,6 @@ const createCalendar = (currentDate, calendarElement) => {
     const nextButton = document.createElement('button');
     nextButton.textContent = '>';
     nextButton.addEventListener('click', () => {
-        // selectedDate.setMonth(selectedDate.getMonth() + 1);
-        // updateCalendar(0);
         monthShift++;
         updateCalendar(monthShift);
     });
@@ -110,16 +115,10 @@ const createCalendar = (currentDate, calendarElement) => {
 
 const updateDateSelectedText = () => {
     let formattedDate = selectedDate.toISOString().split("T")[0];
-    // console.log(formattedDate);
     document.querySelector('#dateSelected').value = formattedDate;
 
-    // dd/mm/yy
-    // formattedDate = formattedDate[8]+formattedDate[9]+"/"+formattedDate[5]+formattedDate[6]+"/"+formattedDate[2]+formattedDate[3];
-    
-    // mm/dd/yy
     formattedDate = formattedDate[5]+formattedDate[6]+"/"+formattedDate[8]+formattedDate[9]+"/"+formattedDate[2]+formattedDate[3];
     document.querySelector('.date-selected').textContent = formattedDate;
-    // console.log(formattedDate);
 };
 
 const arrangeCalendars = () => {
@@ -147,8 +146,6 @@ const updateCalendar = (Shift) => {
     createCalendar(nextMonth, calendarElement);
     document.querySelectorAll('.date-button').forEach(btn => {
         if (btn.getAttribute('data-date') === selectedDate.toISOString().split('T')[0]) {
-            // console.log(btn.getAttribute('data-date'));
-            // console.log(selectedDate.toISOString().split('T')[0]);
             btn.classList.add('selected-date');
         } else {
             btn.classList.remove('selected-date');
