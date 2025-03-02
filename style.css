@@ -242,10 +242,20 @@
     margin-top: 5px;
     border-radius: 10px;
     min-height: 120px;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.6;
     color: #333;
     border: 1px solid #ddd;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 24px, /* ความสูงของแต่ละบรรทัด */
+        #ddd 24px,       /* สีเส้นบรรทัด */
+        #ddd 25px        /* ความสูงของเส้นบรรทัด */
+    );
+    line-height: 25px;   /* ปรับความสูงของบรรทัดให้ตรงกับเส้น */
+    padding-top: 5px;    /* ปรับตำแหน่งเริ่มต้นของข้อความ */
+    white-space: pre-wrap; /* รักษาการขึ้นบรรทัดใหม่ */
   }
   
   /* ส่วนของ Emotion */
