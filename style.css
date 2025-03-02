@@ -217,6 +217,7 @@
       align-items: center;
       /* justify-content: center; */
       gap: 20px;
+      height: 150vh;
     }
 
   /* ไอคอนลูกศรลง */
@@ -285,7 +286,7 @@
     
     transition: transform 0.3s ease-out;
     
-    position: fixed;
+    position: sticky;
     bottom:-100%;
   }
 

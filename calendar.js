@@ -154,8 +154,8 @@ const updateCalendar = (Shift) => {
     arrangeCalendars();
 }
 
-const extraOffset = -1 * window.innerHeight * 0.20; // Calculate 20% of the viewport height once
-const limitElement = document.querySelector(".page-note");
+const extraOffset = -1 * window.innerHeight * 0.30; // Calculate 20% of the viewport height once
+const limitElement = document.querySelector(".container-button-shortcut");
 
 let isScrollingBack = false;  // Flag to handle scroll lock
 let scrollTimeout;  // Variable to store the timeout
@@ -169,7 +169,7 @@ window.addEventListener("scroll", () => {
     // If there’s a pending timeout, we don't need to execute this logic again
     if (scrollTimeout) return;
 
-    const limitBottom = limitElement.getBoundingClientRect().top + window.scrollY;
+    const limitBottom = limitElement.getBoundingClientRect().bottom + window.scrollY;
     const screenBottom = window.scrollY + window.innerHeight + extraOffset;
 
     if (screenBottom > limitBottom && !isScrollingBack) {

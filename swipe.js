@@ -19,7 +19,7 @@ const showPageNote = () => {
         transition: 'transform 0.5s ease-in-out',
         transform: 'translateY(0)'
     });
-    document.querySelector(".container-emotion").style.bottom = "15px";
+    document.querySelector(".container-emotion").style.bottom = "30px";
   
 };
 
