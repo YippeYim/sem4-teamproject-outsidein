@@ -157,29 +157,36 @@ const updateCalendar = (Shift) => {
 const extraOffset = -1 * window.innerHeight * 0.20; // Calculate 20% of the viewport height once
 const limitElement = document.querySelector(".page-note");
 
-let isScrolling = false;
+let isScrollingBack = false;  // Flag to handle scroll lock
+
+let scrollTimeout;  // Variable to store the timeout
 
 window.addEventListener("scroll", () => {
-    if (isScrolling) return; // Prevent further execution while already handling scroll
-    
+    // If there’s a pending timeout, we don't need to execute this logic again.
+    if (scrollTimeout) return;
+
     const limitBottom = limitElement.getBoundingClientRect().top + window.scrollY;
     const screenBottom = window.scrollY + window.innerHeight + extraOffset;
 
-    if (screenBottom > limitBottom) {
-        console.log("Reached the limit!");
-        
+    if (screenBottom > limitBottom && !isScrollingBack) {
+        console.log("is scrolling detect");
+
+        // Prevent further execution while already handling scroll
+        isScrollingBack = true;
+        console.log("go back!");
+
         // Smooth scroll to the limit
         window.scrollTo(0, limitBottom - window.innerHeight - extraOffset);
         
         // Disable scrolling temporarily
         document.body.style.overflowY = "hidden";
-        
-        // Use requestAnimationFrame to reset overflowY once the animation frame is ready
-        isScrolling = true;
-        requestAnimationFrame(() => {
+
+        // Set a timeout to re-enable scrolling and allow the event listener to run again
+        scrollTimeout = setTimeout(() => {
             document.body.style.overflowY = ""; // Re-enable scroll after the animation
-            isScrolling = false; // Allow scroll again
-        });
+            isScrollingBack = false; // Allow scroll again
+            scrollTimeout = null;  // Clear the timeout reference
+        }, 300);  // The timeout duration can be adjusted based on your needs
     }
 });
 
