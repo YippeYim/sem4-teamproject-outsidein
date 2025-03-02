@@ -68,7 +68,7 @@ const createCalendar = (currentDate, calendarElement) => {
     calendarContainer.style.padding = '10px';  // ระยะห่างจากขอบ
     calendarContainer.style.width = 'fit-content';  // ขนาดพอดีกับเนื้อหาภายใน
     calendarContainer.style.margin = '10px';  // เพิ่มช่องว่างรอบ ๆ ปฏิทิน
-    calendarContainer.style.backgroundColor = 'rgb(250, 203, 211)';  // เติมสีชมพูอ่อนที่ด้านในของกรอบ
+    calendarContainer.style.backgroundColor = 'rgb(255, 216, 225)';  // เติมสีชมพูอ่อนที่ด้านในของกรอบ
 
     const monthLabel = document.createElement('h2');
     monthLabel.textContent = `${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getFullYear()}`;
