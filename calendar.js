@@ -1,17 +1,3 @@
-const calendarContainer = document.createElement('div');
-calendarContainer.style.alignItems = 'center';
-calendarContainer.style.display = 'flex';
-calendarContainer.style.flexDirection = 'column';
-
-// เพิ่มกรอบสี่เหลี่ยมสีชมพูอ่อนโดยตรงใน JavaScript
-calendarContainer.style.border = '3px solid #ffb6c1';  // สีชมพูอ่อน
-calendarContainer.style.borderRadius = '15px';  // มุมมน
-calendarContainer.style.padding = '10px';  // ระยะห่างจากขอบ
-
-const monthLabel = document.createElement('h2');
-monthLabel.textContent = `${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getFullYear()}`;
-
-
 console.log("calendar.js loaded");
 const calendarElement = document.querySelector('.calendar');
 calendarElement.style.display = 'flex';
