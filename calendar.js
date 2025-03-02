@@ -154,16 +154,32 @@ const updateCalendar = (Shift) => {
     arrangeCalendars();
 }
 
-const extraOffset = -1 * window.innerHeight * 0.20; // Calculate 10vh once
+const extraOffset = -1 * window.innerHeight * 0.20; // Calculate 20% of the viewport height once
 const limitElement = document.querySelector(".page-note");
 
+let isScrolling = false;
+
 window.addEventListener("scroll", () => {
+    if (isScrolling) return; // Prevent further execution while already handling scroll
+    
     const limitBottom = limitElement.getBoundingClientRect().top + window.scrollY;
     const screenBottom = window.scrollY + window.innerHeight + extraOffset;
 
     if (screenBottom > limitBottom) {
         console.log("Reached the limit!");
+        
+        // Smooth scroll to the limit
         window.scrollTo(0, limitBottom - window.innerHeight - extraOffset);
+        
+        // Disable scrolling temporarily
+        document.body.style.overflowY = "hidden";
+        
+        // Use requestAnimationFrame to reset overflowY once the animation frame is ready
+        isScrolling = true;
+        requestAnimationFrame(() => {
+            document.body.style.overflowY = ""; // Re-enable scroll after the animation
+            isScrolling = false; // Allow scroll again
+        });
     }
 });
 
