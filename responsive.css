@@ -38,7 +38,7 @@
     }
 
     .swipe-box {
-        min-height: calc(100vh - 300px);
+        /* min-height: calc(100vh - 300px); */
     }
 
     .container-note {
@@ -106,7 +106,7 @@
     }
 
     .swipe-box {
-        height: calc(100vh - 350px);
+        /* height: calc(100vh - 350px); */
     }
 
     .container-note {
@@ -161,7 +161,7 @@
     }
 
     .swipe-box {
-        height: calc(100vh - 400px);
+        /* height: calc(100vh - 400px); */
     }
 
     .container-note {

@@ -154,6 +154,18 @@ const updateCalendar = (Shift) => {
     arrangeCalendars();
 }
 
+const extraOffset = -1 * window.innerHeight * 0.20; // Calculate 10vh once
+const limitElement = document.querySelector(".page-note");
+
+window.addEventListener("scroll", () => {
+    const limitBottom = limitElement.getBoundingClientRect().top + window.scrollY;
+    const screenBottom = window.scrollY + window.innerHeight + extraOffset;
+
+    if (screenBottom > limitBottom) {
+        console.log("Reached the limit!");
+        window.scrollTo(0, limitBottom - window.innerHeight - extraOffset);
+    }
+});
 
 updateDateSelectedText();
 updateCalendar(monthShift);

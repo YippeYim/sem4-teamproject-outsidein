@@ -138,13 +138,18 @@
 
   .swipe-box {
     padding: 10px;
-    min-height: calc(100vh - 400px); /* ปรับขนาดให้เต็มพื้นที่ที่เหลือ */
+    /* min-height: calc(100vh - 400px); ปรับขนาดให้เต็มพื้นที่ที่เหลือ */
+    height:15vh;
+    width: calc(100vw - 20px);
     background-color: #FFFDEC;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-    position: relative;
-    overflow-y: auto; /* ให้ scroll ได้ถ้าข้อมูลเยอะ */
+    /* position: relative; */
+    /* overflow-y: auto; ให้ scroll ได้ถ้าข้อมูลเยอะ */
+    position: fixed;
+    bottom: 0;
+    left:0;
   }  
   .arrow-up {
     display: flex;
