@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <!-- ลิงก์ Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Itim', cursive;
+            background-color: #FFE2E2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .todo-container {
+            width: 90%;
+            max-width: 500px;
+            padding: 20px;
+            background-color: #fff8e7; /* สีครีม */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .todo-input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background-color: #fff; /* สีพื้นหลัง input */
+        }
+
+        .todo-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .todo-item.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .todo-item button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #ff6b6b;
+        }
+
+        .home-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #D1E9F6;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .todo-container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .todo-input {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .todo-item {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .home-button {
+                bottom: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .todo-container {
+                width: 100%;
+                padding: 10px;
+                border-radius: 0;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .todo-input {
+                font-size: 12px;
+                padding: 6px;
+            }
+
+            .todo-item {
+                font-size: 12px;
+                padding: 6px;
+            }
+
+            .home-button {
+                bottom: 5px;
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- To-Do List Container -->
+    <div class="todo-container">
+        <h2>To-Do List</h2>
+        <input type="text" class="todo-input" id="todoInput" placeholder="เพิ่มรายการใหม่...">
+        <ul class="todo-list" id="todoList"></ul>
+    </div>
+
+    <!-- ปุ่มโฮมอยู่ด้านล่างตรงกลาง -->
+    <button class="home-button" onclick="goToHome()">
+        <i class="fas fa-home"></i> <!-- ไอคอนบ้าน -->
+    </button>
+
+    <script>
+        const todoInput = document.getElementById('todoInput');
+        const todoList = document.getElementById('todoList');
+
+        // โหลด To-Do List จาก Local Storage เมื่อหน้าเว็บโหลด
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+            savedTodos.forEach(todo => {
+                addTodoItem(todo.text, todo.completed);
+            });
+        });
+
+        // เพิ่มรายการ To-Do
+        todoInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && this.value.trim() !== '') {
+                addTodoItem(this.value.trim(), false);
+                this.value = '';
+                saveTodos();
+            }
+        });
+
+        // เพิ่มรายการ To-Do ลงใน DOM
+        function addTodoItem(text, completed) {
+            const li = document.createElement('li');
+            li.className = 'todo-item' + (completed ? ' completed' : '');
+            li.innerHTML = `
+                <span>${text}</span>
+                <button onclick="removeTodoItem(this)"><i class="fas fa-trash"></i></button>
+            `;
+            li.addEventListener('click', function() {
+                this.classList.toggle('completed');
+                saveTodos();
+            });
+            todoList.appendChild(li);
+        }
+
+        // ลบรายการ To-Do
+        function removeTodoItem(button) {
+            button.parentElement.remove();
+            saveTodos();
+        }
+
+        // บันทึก To-Do List ลงใน Local Storage
+        function saveTodos() {
+            const todos = [];
+            document.querySelectorAll('.todo-item').forEach(item => {
+                todos.push({
+                    text: item.querySelector('span').innerText,
+                    completed: item.classList.contains('completed')
+                });
+            });
+            localStorage.setItem('todos', JSON.stringify(todos));
+        }
+
+        // กลับไปที่หน้าหลัก
+        function goToHome() {
+            window.location.href = 'index.html'; // เปลี่ยนไปที่หน้าหลัก
+        }
+    </script>
+</body>
+</html>

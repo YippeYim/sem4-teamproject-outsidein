@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notebook</title>
+    <!-- ลิงก์ Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Itim', cursive;
+            background-color: #FFE2E2;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .notebook-container {
+            display: flex;
+            width: 300%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .notebook-page {
+            width: 100vw;
+            height: 100vh;
+            background-color: #fff8e7;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+        }
+
+        .notebook-lines {
+            background-image: repeating-linear-gradient(
+                to bottom,
+                transparent,
+                transparent 24px,
+                #ddd 24px,
+                #ddd 25px
+            );
+            line-height: 25px;
+            padding-top: 5px;
+            white-space: pre-wrap;
+            position: relative;
+        }
+
+        .notebook-lines::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 40px;
+            width: 1px;
+            height: 100%;
+            background-color: #ccc;
+        }
+
+        .note-area {
+            width: 100%;
+            min-height: 80vh;
+            font-size: 22px;
+            line-height: 25px;
+            color: #333;
+            border: none;
+            background: transparent;
+            outline: none;
+            padding-left: 50px;
+        }
+
+        .nav-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-button {
+            background-color: #D1E9F6;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .home-button {
+            background-color: #D1E9F6;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook-container" id="notebookContainer">
+        <div class="notebook-page">
+            <div class="notebook-lines">
+                <div class="note-area" contenteditable="true" data-page="1">
+                    <!-- หน้า 1 -->
+                </div>
+            </div>
+        </div>
+        <div class="notebook-page">
+            <div class="notebook-lines">
+                <div class="note-area" contenteditable="true" data-page="2">
+                    <!-- หน้า 2 -->
+                </div>
+            </div>
+        </div>
+        <div class="notebook-page">
+            <div class="notebook-lines">
+                <div class="note-area" contenteditable="true" data-page="3">
+                    <!-- หน้า 3 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ปุ่มโฮมอยู่ข้างปุ่ม "ถัดไป" -->
+    <div class="nav-buttons">
+        <button class="nav-button" onclick="prevPage()">ก่อนหน้า</button>
+        <button class="nav-button" onclick="nextPage()">ถัดไป</button>
+        <button class="home-button" onclick="goToHome()">
+            <i class="fas fa-home"></i> <!-- ไอคอนบ้าน -->
+        </button>
+    </div>
+
+    <script>
+        let currentPage = 0;
+        const notebookContainer = document.getElementById('notebookContainer');
+        const noteAreas = document.querySelectorAll('.note-area');
+
+        // โหลดข้อความจาก Local Storage เมื่อหน้าเว็บโหลด
+        document.addEventListener('DOMContentLoaded', function() {
+            noteAreas.forEach(noteArea => {
+                const page = noteArea.getAttribute('data-page');
+                const savedNote = localStorage.getItem(`note-page-${page}`);
+                if (savedNote) {
+                    noteArea.innerHTML = savedNote;
+                }
+            });
+        });
+
+        // บันทึกข้อความลงใน Local Storage เมื่อผู้ใช้พิมพ์
+        noteAreas.forEach(noteArea => {
+            noteArea.addEventListener('input', function() {
+                const page = this.getAttribute('data-page');
+                localStorage.setItem(`note-page-${page}`, this.innerHTML);
+            });
+        });
+
+        function goToHome() {
+            window.location.href = 'index.html'; // เปลี่ยนไปที่หน้าหลัก
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                updatePage();
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < 2) { // เปลี่ยน 2 เป็นจำนวนหน้าสูงสุด - 1
+                currentPage++;
+                updatePage();
+            }
+        }
+
+        function updatePage() {
+            const offset = -currentPage * 100;
+            notebookContainer.style.transform = `translateX(${offset}vw)`;
+        }
+    </script>
+</body>
+</html>
