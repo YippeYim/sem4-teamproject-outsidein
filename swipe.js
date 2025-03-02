@@ -19,6 +19,8 @@ const showPageNote = () => {
         transition: 'transform 0.5s ease-in-out',
         transform: 'translateY(0)'
     });
+    document.querySelector(".container-emotion").style.bottom = "15px";
+  
 };
 
 const hidePageNote = () => {
@@ -33,6 +35,7 @@ const hidePageNote = () => {
         transition: '',
         transform: ''
     });
+    document.querySelector(".container-emotion").style.bottom = "-100%";
 };
 
 // Event Listeners for Swipe Box
