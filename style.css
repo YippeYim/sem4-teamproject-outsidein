@@ -276,7 +276,7 @@
   
   /* ส่วนของ Emotion */
   .container-emotion {
-    /* width: 85%; */
+    width: 85vw;
     padding: 10px;
     border-radius: 15px;
     display: flex;
@@ -303,8 +303,8 @@
     border-radius: 50%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    width: 15vw;
-    height: 15vw;
+    width: 12vw;
+    height: 12vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -341,7 +341,7 @@
     background: #FFE2E2;
     border: none;
     cursor: pointer;
-    margin: 5px;
+    margin: 0.5vw;
   }
  
  /* ปุ่มวันในcalendar */

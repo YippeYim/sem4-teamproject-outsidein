@@ -114,9 +114,14 @@
         width: 80%;
     }
 
-    .container-emotion {
+    /* .container-emotion {
         width: 80%;
     }
+
+    .button-shortcut-emotion img {
+        width: 15%;
+        aspect-ratio: 1/1;
+    } */
 
     .container-button-shortcut-notepage {
         gap: 30px;
