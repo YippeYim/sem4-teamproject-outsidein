@@ -154,6 +154,69 @@ const updateCalendar = (Shift) => {
     arrangeCalendars();
 }
 
+const extraOffset = -1 * window.innerHeight * 0.30; // Calculate 20% of the viewport height once
+const limitElement = document.querySelector(".container-button-shortcut");
+
+let isScrollingBack = false;  // Flag to handle scroll lock
+let scrollTimeout;  // Variable to store the timeout
+
+// Smooth scrolling needs to be turned off during programmatic scroll
+document.body.style.scrollBehavior = "auto"; // Disable smooth scrolling globally
+
+let lastScrollPosition = window.scrollY;
+
+window.addEventListener("scroll", () => {
+    // If there’s a pending timeout, we don't need to execute this logic again
+    if (scrollTimeout) return;
+
+    const limitBottom = limitElement.getBoundingClientRect().bottom + window.scrollY;
+    const screenBottom = window.scrollY + window.innerHeight + extraOffset;
+
+    if (screenBottom > limitBottom && !isScrollingBack) {
+        console.log("is scrolling detect");
+
+        // Prevent further execution while already handling scroll
+        isScrollingBack = true;
+        console.log("go back!");
+
+        // Immediately scroll to the limit (no smooth scroll, instant)
+        // This time using requestAnimationFrame to gradually scroll to the position
+        function smoothScrollTo(targetPosition) {
+            const startPosition = window.scrollY;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = timestamp - startTime;
+                const scrollTo = startPosition + (distance * (progress / 300)); // Smooth over 300ms
+
+                window.scrollTo(0, scrollTo);
+                
+                if (progress < 300) { // Continue scrolling until the target is reached
+                    requestAnimationFrame(step);
+                } else {
+                    window.scrollTo(0, targetPosition); // Ensure the target position is exactly reached
+                }
+            }
+
+            requestAnimationFrame(step);
+        }
+
+        // Scroll smoothly to the target position
+        smoothScrollTo(limitBottom - window.innerHeight - extraOffset);
+
+        // Disable scrolling temporarily
+        document.body.style.overflowY = "hidden";
+
+        // Set a timeout to re-enable scrolling after the animation is done
+        scrollTimeout = setTimeout(() => {
+            document.body.style.overflowY = ""; // Re-enable scroll after the animation
+            isScrollingBack = false; // Allow scroll again
+            scrollTimeout = null;  // Clear the timeout reference
+        }, 340);  // Timeout duration should match smooth scroll duration
+    }
+});
 
 updateDateSelectedText();
 updateCalendar(monthShift);

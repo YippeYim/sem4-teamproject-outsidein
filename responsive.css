@@ -4,6 +4,7 @@
 @media only screen and (max-width: 600px) {
     body {
         font-size: 14px;
+        overflow-y: scroll;
     }
 
     h1 {
@@ -11,7 +12,7 @@
     }
 
     .sidebar {
-        width: 100%;
+        /* width: 100%; */
         right: -100%;
     }
 
@@ -19,9 +20,16 @@
         right: 0;
     }
 
+    .nav {
+        margin: 20px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
     .container-button-shortcut {
         gap: 15px;
-        margin: 15px;
+        margin: 10px;
+        margin-top: 0;
     }
 
     .button-shortcut {
@@ -29,10 +37,7 @@
         height: 50px;
     }
 
-    .swipe-box {
-        height: calc(100vh - 300px);
-    }
-
+    
     .container-note {
         width: 90%;
     }
@@ -42,7 +47,7 @@
     }
 
     .container-emotion {
-        width: 90%;
+        /* width: 90%; */
     }
 
     .container-button-shortcut-notepage {
@@ -63,12 +68,13 @@
 @media only screen and (max-width: 600px) {
     .calendar {
         overflow-x: auto; /* ให้สามารถเลื่อนแนวนอนได้ */
+        overflow-y: auto;
         white-space: nowrap; /* ป้องกันข้อความขึ้นบรรทัดใหม่ */
     }
 
     .calendar table {
         width: 100%; /* กว้างเต็มพื้นที่ */
-        font-size: 12px; /* ปรับขนาดฟอนต์ให้เล็กลง */
+        font-size: 14px; /* ปรับขนาดฟอนต์ให้เล็กลง */
     }
 }
 
@@ -97,7 +103,7 @@
     }
 
     .swipe-box {
-        height: calc(100vh - 350px);
+        /* height: calc(100vh - 350px); */
     }
 
     .container-note {
@@ -108,9 +114,14 @@
         width: 80%;
     }
 
-    .container-emotion {
+    /* .container-emotion {
         width: 80%;
     }
+
+    .button-shortcut-emotion img {
+        width: 15%;
+        aspect-ratio: 1/1;
+    } */
 
     .container-button-shortcut-notepage {
         gap: 30px;
@@ -152,7 +163,7 @@
     }
 
     .swipe-box {
-        height: calc(100vh - 400px);
+        /* height: calc(100vh - 400px); */
     }
 
     .container-note {
