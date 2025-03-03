@@ -68,15 +68,32 @@ const createCalendar = (currentDate, calendarElement) => {
     calendarContainer.style.padding = '10px';  // ระยะห่างจากขอบ
     calendarContainer.style.width = 'fit-content';  // ขนาดพอดีกับเนื้อหาภายใน
     calendarContainer.style.margin = '10px';  // เพิ่มช่องว่างรอบ ๆ ปฏิทิน
-    calendarContainer.style.backgroundColor = 'rgb(249, 224, 227)';  // เติมสีชมพูอ่อนที่ด้านในของกรอบ
+    calendarContainer.style.backgroundColor = '#FFCFCF';  // เติมสีชมพูอ่อนที่ด้านในของกรอบ
 
     const monthLabel = document.createElement('h2');
     monthLabel.textContent = `${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getFullYear()}`;
+
     const prevButton = document.createElement('button');
     prevButton.textContent = '<';
     prevButton.addEventListener('click', () => {
         monthShift--;
         updateCalendar(monthShift);
+    });
+    // ✅ เพิ่มสไตล์ให้ปุ่ม prevButton
+    prevButton.style.backgroundColor = '#D1E9F6'; // สีพื้นหลัง
+    prevButton.style.color = 'rgb(61, 145, 254)'; // สีตัวอักษร
+    prevButton.style.border = 'none';
+    prevButton.style.padding = '10px 20px';
+    prevButton.style.borderRadius = '5px';
+    prevButton.style.cursor = 'pointer';
+    prevButton.style.fontSize = '16px';
+
+    // ✅ เพิ่มเอฟเฟกต์เมื่อโฮเวอร์
+    prevButton.addEventListener('mouseover', () => {
+        prevButton.style.backgroundColor = 'rgb(201, 211, 248)'; // สีเข้มขึ้น
+    });
+    prevButton.addEventListener('mouseout', () => {
+        prevButton.style.backgroundColor = '#D1E9F6'; // กลับเป็นสีเดิม
     });
 
     const nextButton = document.createElement('button');
@@ -84,6 +101,22 @@ const createCalendar = (currentDate, calendarElement) => {
     nextButton.addEventListener('click', () => {
         monthShift++;
         updateCalendar(monthShift);
+    });
+    // ✅ เพิ่มสไตล์ให้ปุ่ม prevButton
+    nextButton.style.backgroundColor = '#D1E9F6'; // สีพื้นหลัง
+    nextButton.style.color = 'rgb(61, 145, 254)'; // สีตัวอักษร
+    nextButton.style.border = 'none';
+    nextButton.style.padding = '10px 20px';
+    nextButton.style.borderRadius = '5px';
+    nextButton.style.cursor = 'pointer';
+    nextButton.style.fontSize = '16px';
+
+    // ✅ เพิ่มเอฟเฟกต์เมื่อโฮเวอร์
+    nextButton.addEventListener('mouseover', () => {
+        nextButton.style.backgroundColor = 'rgb(201, 211, 248)'; // สีเข้มขึ้น
+    });
+    nextButton.addEventListener('mouseout', () => {
+        nextButton.style.backgroundColor = '#D1E9F6'; // กลับเป็นสีเดิม
     });
 
     const headerContainer = document.createElement('div');
@@ -100,6 +133,23 @@ const createCalendar = (currentDate, calendarElement) => {
     calendarContainer.appendChild(table);
     
     const todayButton = document.createElement('button');
+    // ✅ เพิ่มสไตล์ให้ปุ่ม Today
+    todayButton.style.backgroundColor = '#D1E9F6'; // สีพื้นหลัง
+    todayButton.style.color = 'rgb(61, 145, 254)'; // สีตัวอักษร
+    todayButton.style.border = 'none';
+    todayButton.style.padding = '10px 20px';
+    todayButton.style.borderRadius = '5px';
+    todayButton.style.cursor = 'pointer';
+    todayButton.style.fontSize = '16px';
+
+    // ✅ เพิ่มเอฟเฟกต์เมื่อโฮเวอร์
+    todayButton.addEventListener('mouseover', () => {
+        todayButton.style.backgroundColor = 'rgb(201, 211, 248)'; // สีเข้มขึ้น
+    });
+    todayButton.addEventListener('mouseout', () => {
+        todayButton.style.backgroundColor = '#D1E9F6'; // กลับเป็นสีเดิม
+    });
+
     todayButton.textContent = 'Today';
     todayButton.addEventListener('click', () => {
         selectedDate = new Date();
