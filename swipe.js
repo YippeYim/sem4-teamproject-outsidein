@@ -59,17 +59,19 @@ swipeBox.addEventListener('touchend', () => {
     startY = undefined;
 });
 
+const noteContainer = document.querySelector(".arrow-down");
+
 // Event Listeners for Page Note
-pageNote.addEventListener('touchstart', (e) => {
+noteContainer.addEventListener('touchstart', (e) => {
     startY = e.touches[0].clientY;
 });
 
-pageNote.addEventListener('touchmove', (e) => {
+noteContainer.addEventListener('touchmove', (e) => {
     currentY = e.touches[0].clientY;
 });
 
-pageNote.addEventListener('touchend', () => {
-    if (startY < currentY - 170 && Math.abs(startY - currentY) > swipeThreshold) { 
+noteContainer.addEventListener('touchend', () => {
+    if (startY < currentY - 150 && Math.abs(startY - currentY) > swipeThreshold) { 
         // Swipe down
         hidePageNote();
     }

@@ -226,7 +226,8 @@
   .arrow-down {
     display: flex;
     width: 25px;
-
+    padding-left: 40%;
+    padding-right: 40%;
   }
 
   /* วันที่ใน Note */
