@@ -70,7 +70,13 @@ const showNoteForDate = (date) => {
     const noteArea = document.getElementById('pagenote');
     const dateKey = date.toISOString().split('T')[0];
     // const savedData = JSON.parse(localStorage.getItem(dateKey));
-    const savedData = JSON.parse(myData[dateKey]) || {emotions:[]};
+    
+    let savedData;
+    if (myData[dateKey] != undefined){
+        savedData = JSON.parse(myData[dateKey]);
+    }else{
+        savedData = {emotions:[]};
+    }
     if (savedData) {
         console.log(savedData);
         if (savedData.emotions.length == 0) {
