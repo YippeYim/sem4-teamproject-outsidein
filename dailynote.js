@@ -6,21 +6,26 @@ const saveNoteForDate = (date) => {
         note: noteArea.innerHTML,
         emotions: selectedEmotions
     };
-    localStorage.setItem(dateKey, JSON.stringify(noteData));
+    // localStorage.setItem(dateKey, JSON.stringify(noteData));
+    myData[dateKey] = JSON.stringify(noteData);
     
     // extract highlight text from note
     const matches = [...noteArea.innerHTML.matchAll(/<div>\s*!\s*(.*?)<\/div>/g)];
     const extractedTexts = matches.map(match => match[1]); // Get only the captured text
     // Save highlights
-    const savedData = JSON.parse(localStorage.getItem('highlights'));
+    // const savedData = JSON.parse(localStorage.getItem('highlights'));
+    const savedData = JSON.parse(myData.highlights);
     if (savedData) {
         savedData[dateKey] = extractedTexts;
-        localStorage.setItem("highlights", JSON.stringify(savedData));
+        // localStorage.setItem("highlights", JSON.stringify(savedData));
+        myData.highlights = JSON.stringify(savedData);
     }else{
         const dataToSave = {};
         dataToSave[dateKey] = extractedTexts;
-        localStorage.setItem("highlights", JSON.stringify(dataToSave));
+        // localStorage.setItem("highlights", JSON.stringify(dataToSave));
+        myData.highlights = JSON.stringify(savedData);
     }
+    updateHighlight();
 };
 
 const closeEmotionMenu = () => {
@@ -64,8 +69,10 @@ const openEmotionMenu = () => {
 const showNoteForDate = (date) => {
     const noteArea = document.getElementById('pagenote');
     const dateKey = date.toISOString().split('T')[0];
-    const savedData = JSON.parse(localStorage.getItem(dateKey));
+    // const savedData = JSON.parse(localStorage.getItem(dateKey));
+    const savedData = JSON.parse(myData[dateKey]) || {emotions:[]};
     if (savedData) {
+        console.log(savedData);
         if (savedData.emotions.length == 0) {
             // console.log("No emotions selected");
             closeEmotionMenu();           

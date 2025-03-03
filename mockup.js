@@ -1,0 +1,21 @@
+let myData = {
+    "2025-02-15": "{\"note\":\"\",\"emotions\":[\"Sad\",\"Angry\"]}",
+    "2025-02-24": "{\"note\":\"\",\"emotions\":[\"Sad\"]}",
+    "2025-03-24": "{\"note\":\"st<div>st</div><div>ars</div><div>tar</div><div>st</div><div>ar</div>\",\"emotions\":[]}",
+    "2025-03-04": "{\"note\":\"<br>\",\"emotions\":[]}",
+    "2025-03-14": "{\"note\":\"\",\"emotions\":[]}",
+    "2025-02-27": "{\"note\":\"tttt\",\"emotions\":[]}",
+    "2025-03-03": "{\"note\":\"\",\"emotions\":[\"Sad\",\"Lovely\"]}",
+    "2025-02-26": "{\"note\":\"\",\"emotions\":[\"Lovely\"]}",
+    "2025-02-08": "{\"note\":\"\",\"emotions\":[\"Happy\"]}",
+    "2025-02-25": "{\"note\":\"\",\"emotions\":[\"Angry\"]}",
+    "todos": "[]",
+    "2025-02-28": "{\"note\":\"ตัวเล็กตาแตกมากมาย<div>- ฝากจัดให้หน่อยจ้า</div><div>- ฝากทำเส้นบรรทัดด้วยจ้า</div><div>- งเรนเงนร</div>\",\"emotions\":[\"Sad\",\"Lovely\"]}",
+    "2025-03-31": "{\"note\":\"tttt<div>tst</div>\",\"emotions\":[]}",
+    "highlights": "{\"2025-03-02\":[\"Small win🏆: พรีเซ็นโปรเจคผ่านฉลุ๋ย\",\"Small win🏆: arstr\",\"Small win:\"],\"2025-03-31\":[],\"2025-03-04\":[],\"2025-03-24\":[],\"2025-03-03\":[]}",
+    "2025-02-20": "{\"note\":\"\",\"emotions\":[\"Happy\",\"Happy\",\"Angry\"]}",
+    "2025-03-01": "{\"note\":\"sartra<div>arst</div><div>arst</div><div>arst</div><div>rast</div><div>arst</div><div>rast</div><div>arstrast</div><div>rats</div><div>arst</div><div>rast</div><div>arstrsttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttarstrast</div><div>artf</div><div>arstar</div><div>! hello rsrss</div><div>! rst</div><div>hellow</div><div>! hsssel arst</div><div>arst</div><div>&nbsp; &nbsp; ! arststt</div>\",\"emotions\":[\"Happy\",\"Lovely\"]}",
+    "2025-03-08": "{\"note\":\"\",\"emotions\":[\"Disgust\"]}",
+    "2025-03-02": "{\"note\":\"<div>! Small win🏆: พรีเซ็นโปรเจคผ่านฉลุ๋ย</div><div>I thank you for💖:</div><div>I learned that📖:</div><div>💧To day I drank:a</div><div>- [x]Make a bed🛏️</div><div>- [x] Weight Training🏋️</div><div>! Small win🏆: arstr</div><div>I thank you for💖:</div><div>I learned that📖:</div><div>! Small win:</div>stst\\n  stst                  st<div>I thank you for:</div>st\\n                    stst<div>I learned that:</div><div>rststst</div><div>ratsst</div><div>arss</div><div>s</div><div>s</div><div>s</div><div>s</div><div>s</div><div><br></div><div>stst</div><div><br></div><div><br></div><div>rstrst</div><div>rst</div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div>st</div>\",\"emotions\":[\"Disgust\"]}",
+    "2025-02-22": "{\"note\":\"\",\"emotions\":[\"Angry\"]}"
+};

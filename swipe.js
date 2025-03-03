@@ -35,6 +35,8 @@ const hidePageNote = () => {
         transform: ''
     });
     document.querySelector(".container-emotion").style.bottom = "-100%";
+
+    changeTextRandomly(message.concat(userHighlight));
 };
 
 // Event Listeners for Swipe Box
